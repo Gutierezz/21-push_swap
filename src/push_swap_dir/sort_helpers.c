@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int		*stack_to_arr(t_stack *stack)
+int			*stack_to_arr(t_stack *stack)
 {
 	int		*arr;
 	t_node	*top;
@@ -17,9 +17,9 @@ int		*stack_to_arr(t_stack *stack)
 	return (arr);
 }
 
-t_rotation *new_rotation(int a_r, int a_rr, int b_r, int b_rr)
+t_rotation	*new_rotation(int a_r, int a_rr, int b_r, int b_rr)
 {
-	t_rotation *new_rot;
+	t_rotation	*new_rot;
 
 	new_rot = (t_rotation*)ft_memalloc(sizeof(t_rotation));
 	new_rot->a_r = a_r;
@@ -30,14 +30,14 @@ t_rotation *new_rotation(int a_r, int a_rr, int b_r, int b_rr)
 	return (new_rot);
 }
 
-void    mult_rot(t_stack *stack, int times, \
+void		mult_rot(t_stack *stack, int times, \
 		void (*cmnd)(t_stack*, int, char*), char *command)
 {
 	while (times--)
 		cmnd(stack, 0, command);
 }
 
-int     a_rot_count(t_stack *a, int input)
+int			a_rot_count(t_stack *a, int input)
 {
 	t_node *tmp;
 	int     rot;
@@ -52,9 +52,9 @@ int     a_rot_count(t_stack *a, int input)
 	return (rot);
 }
 
-void    sort_three(t_stack *stack, int (*cmp)(int, int))
+void		sort_three(t_stack *stack, int (*cmp)(int, int))
 {
-	size_t len;
+	size_t	len;
 
 	len = stack->size;
 	if (is_sorted(stack, len, cmp))

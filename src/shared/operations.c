@@ -12,26 +12,6 @@
 
 #include "push_swap.h"
 
-int		is_sorted(t_stack *stack, size_t len, int (*cmp)(int, int))
-{
-	size_t	i;
-	t_node	*ptr;
-
-	i = 0;
-	ptr = stack->top;
-	if (stack->size > 1 && stack->top)
-	{
-		while (i < (len - 1))
-		{
-			if (!cmp(ptr->data, ptr->next->data))
-				return (0);
-			ptr = ptr->next;
-			i++;
-		}
-	}
-	return (1);
-}
-
 void	push(t_stack *stack, t_node *new_top)
 {
 	if (is_empty(stack))
@@ -88,14 +68,6 @@ void	swap_top2(t_stack *stack, int both, char *command)
 	}
 }
 
-void	exec_for_both(t_stack *a, t_stack *b, void (*cmnd)(t_stack*, int, char*), char *command)
-{
-	cmnd(a, 1, NULL);
-	cmnd(b, 1, NULL);
-	if (command)
-		ft_printf("%s\n", command);
-}
-
 void	rotate(t_stack *stack, int both, char *command)
 {
 	if (stack->top && stack->size > 1)
@@ -112,16 +84,6 @@ void	rev_rotate(t_stack *stack, int both, char *command)
 	{
 		stack->top = stack->top->prev;
 		if (!both && command)
-			ft_printf("%s\n", command);
-	}
-}
-
-void	push_to_dst(t_stack *src, t_stack *dst, char *command)
-{
-	if (!is_empty(src))
-	{
-		push(dst, pop(src));
-		if (command)
 			ft_printf("%s\n", command);
 	}
 }

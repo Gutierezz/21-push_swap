@@ -20,12 +20,6 @@ int	clear_memory(t_stack *a, t_stack *b, int *arr)
 	return (0);
 }
 
-
-int asc(int a, int b)
-{
-	return (a <= b);
-}
-
 int		is_digit_string(const char *str)
 {
 	size_t i;

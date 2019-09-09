@@ -50,30 +50,27 @@ typedef struct		s_rotation
 	int				arr[4];
 }					t_rotation;
 
-typedef	struct s_graphics
+typedef	struct		s_graphics
 {
-	SDL_Window *window;
-	SDL_Renderer *render;
-	SDL_Texture *texture;
-	//  SDL_Surface	*screen;
-	//  SDL_Surface *buffer;
-	SDL_Rect	rect;
-	bool		is_running;
-	bool		is_paused;
-	bool		error;
-	t_stack		*a;
-	t_stack		*b;
-	int			max_size;
-	int		width_mult;
-	int		height_mult;
-}				t_graphics;
+	SDL_Window		*window;
+	SDL_Renderer	*render;
+	SDL_Texture		*texture;
+	SDL_Rect		rect;
+	bool			is_running;
+	bool			is_paused;
+	bool			error;
+	t_stack			*a;
+	t_stack			*b;
+	int				max_size;
+	int				width_mult;
+	int				height_mult;
+}					t_graphics;
 
 /*
-** valudation
+** valudation  +
 */
 
 int			clear_memory(t_stack *a, t_stack *b, int *arr);
-int			asc(int a, int b);
 int			is_digit_string(const char *str);
 int			handle_multiarg(int *arr, char *arg);
 int			fit_into_int(int ac, char **av, int **arr, int visual);
@@ -94,7 +91,6 @@ void		handle_event(SDL_Event *event, t_graphics *graph);
 ** checker -> visualizer
 */
 
-void		draw_console(t_stack *a, t_stack *b, int max_size);
 void		draw_contour(t_graphics *graph);
 void		draw_graphics(t_stack *a, t_stack *b, t_graphics *graph);
 void		draw_stack(t_stack *stack, t_graphics *graph, int start);
@@ -102,34 +98,45 @@ t_graphics	*graph_init(t_stack *a, t_stack *b, int max_size, int *arr);
 void		set_rect_pos(SDL_Rect *rect, int x, int y);
 void		set_rect_size(SDL_Rect *rect, int w, int h);
 
-
 /*
-** stack_funcs
+** checker -> visualizer
 */
 
+void		draw_console(t_stack *a, t_stack *b, int max_size);
+
+/*
+** stack_funcs  +
+*/
 
 t_node		*new_node(int data);
 t_stack		*new_stack();
 void		clear_stack(t_stack *stack);  // FIX BUGS
 int			is_empty(t_stack *stack);
+int			is_sorted(t_stack *stack, size_t len, int (*cmp)(int, int));
 
 /*
-** operations
+** operations	+
 */
 
-int			is_sorted(t_stack *stack, size_t len, int (*cmp)(int, int));
 void		push(t_stack *stack, t_node *new_top);
 t_node		*pop(t_stack *stack);
 void		swap_top2(t_stack *stack, int both, char *command);
-void		exec_for_both(t_stack *a, t_stack *b, \
-			void (*cmnd)(t_stack*, int, char*), char *command);
 void		rotate(t_stack *stack, int both, char *command);
 void		rev_rotate(t_stack *stack, int both, char *command);
-void		push_to_dst(t_stack *src, t_stack *dst, char *command);
 
 /*
-** stack_sort
+** more_operations	+
 */
+
+void		exec_for_both(t_stack *a, t_stack *b, \
+			void (*cmnd)(t_stack*, int, char*), char *command);
+void		push_to_dst(t_stack *src, t_stack *dst, char *command);
+int			asc(int a, int b);
+
+/*
+** stack_sort	+
+*/
+
 void		multi_rot_both(t_stack *a, t_stack *b, \
 				t_rotation *rot, int rot_index);
 void		rotate_stacks(t_stack *a, t_stack *b, t_rotation *rot);
@@ -138,7 +145,7 @@ t_rotation	*find_lowest_rot(t_stack *a, t_stack *b);
 void		sort_stack(t_stack *a, t_stack *b, int *arr);
 
 /*
-**  sort_helpers
+**  sort_helpers	+
 */
 
 int			*stack_to_arr(t_stack *stack);
@@ -149,12 +156,10 @@ int			a_rot_count(t_stack *a, int input);
 void		sort_three(t_stack *stack, int (*cmp)(int, int));
 
 /*
-**  rotation_helpers
+**  rotation_helpers	+
 */
 
-void		set_a_rot(t_rotation *rot, int a_r, int a_rr);
-void		set_b_rot(t_rotation *rot, int b_r, int b_rr);
-void		calc_rots(t_rotation *rot);
+ void		calc_rots(t_rotation *rot);
 int			get_min_rot(t_rotation *rot);
 int			get_min_rot_index(t_rotation *rot);
 

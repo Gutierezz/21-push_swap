@@ -36,7 +36,27 @@ void	clear_stack(t_stack *stack)
 	ft_memdel((void **)&stack);
 }
 
-int     is_empty(t_stack *stack)
+int		is_empty(t_stack *stack)
 {
 	return (stack->top == NULL);
+}
+
+int		is_sorted(t_stack *stack, size_t len, int (*cmp)(int, int))
+{
+	size_t	i;
+	t_node	*ptr;
+
+	i = 0;
+	ptr = stack->top;
+	if (stack->size > 1 && stack->top)
+	{
+		while (i < (len - 1))
+		{
+			if (!cmp(ptr->data, ptr->next->data))
+				return (0);
+			ptr = ptr->next;
+			i++;
+		}
+	}
+	return (1);
 }

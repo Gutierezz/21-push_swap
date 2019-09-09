@@ -32,8 +32,8 @@ CH_O	 = $(addprefix $(CH_O_DIR)/, $(CH_FILES:%.c=%.o))
 SH_O	 = $(addprefix $(SH_O_DIR)/, $(SH_FILES:%.c=%.o))
 
 PS_FILES = rotation_helpers.c stack_sort.c sort_helpers.c  push_swap_main.c
-CH_FILES = execute_commands.c visualizer.c checker_main.c
-SH_FILES = operations.c stack_funcs.c validation.c
+CH_FILES = execute_commands.c visualizer.c console_visualizer.c checker_main.c
+SH_FILES = operations.c more_operations.c stack_funcs.c validation.c
 
 
 CC		 = gcc
