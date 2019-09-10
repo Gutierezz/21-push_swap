@@ -23,6 +23,7 @@
 typedef struct		s_node
 {
 	int				data;
+	int				color;
 	struct s_node	*prev;
 	struct s_node	*next;
 }					t_node;
@@ -83,26 +84,38 @@ int			repeated_elems(int *arr, int size);
 int			get_visual_mode(char *arg);
 int			execute_command(t_stack *a, t_stack *b, char *command);
 int			read_and_exec(t_stack *a, t_stack *b, int visual, int *arr);
-int			handle_console(t_stack *a, t_stack *b, int max_size, int visual);
-int			handle_graphics(t_stack *a, t_stack *b, int max_size, int *arr);
-void		handle_event(SDL_Event *event, t_graphics *graph);
+char		**read_commands(int *error);
+int			basic_mode(t_stack *a, t_stack *b);
 
 /*
-** checker -> visualizer
+** checker -> graphics
+*/
+
+int			graphics_mode(t_stack *a, t_stack *b, int max_size, int *arr);
+int			graphics_loop(t_graphics *graph, char **cmmnds);
+void		handle_event(SDL_Event *event, t_graphics *graph, char **cmmnds, int *i);
+void		draw_graphics(int a_mode, int b_mode, t_graphics *graph, int repaint);
+t_graphics	*graph_init(t_stack *a, t_stack *b, int max_size, int *arr);
+
+/*
+** checker -> graphics_helpers
 */
 
 void		draw_contour(t_graphics *graph);
-void		draw_graphics(t_stack *a, t_stack *b, t_graphics *graph);
 void		draw_stack(t_stack *stack, t_graphics *graph, int start);
-t_graphics	*graph_init(t_stack *a, t_stack *b, int max_size, int *arr);
+void		color_mode(char *cmmnd, int *a_mode, int *b_mode);
+void		paint_stack(t_stack *stack, int mode);
 void		set_rect_pos(SDL_Rect *rect, int x, int y);
 void		set_rect_size(SDL_Rect *rect, int w, int h);
 
 /*
-** checker -> visualizer
+** checker -> console_visualizer
 */
 
 void		draw_console(t_stack *a, t_stack *b, int max_size);
+void		draw_level(int a_val, int b_val, int mode);
+int			level_mode(int a_size, int b_size, int i, int max_size);
+int			console_draw_mode(t_stack *a, t_stack *b, int max_size);
 
 /*
 ** stack_funcs  +

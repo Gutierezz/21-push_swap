@@ -1,5 +1,27 @@
 #include "push_swap.h"
 
+void	color_mode(char *cmmnd, int *a_mode, int *b_mode)
+{
+	*a_mode = 0;
+	*b_mode = 0;
+	if (ft_strequ(cmmnd, "pa"))
+		*b_mode = 1;
+	if (ft_strequ(cmmnd, "pb"))
+		*a_mode = 1;
+	if (ft_strequ(cmmnd, "sa") || ft_strequ(cmmnd, "ss"))
+		*a_mode = 2;
+	if (ft_strequ(cmmnd, "sb") || ft_strequ(cmmnd, "ss"))
+		*b_mode = 2;
+	if (ft_strequ(cmmnd, "ra") || ft_strequ(cmmnd, "rr"))
+		*a_mode = 3;
+	if (ft_strequ(cmmnd, "rb") || ft_strequ(cmmnd, "rr"))
+		*b_mode = 3;
+	if (ft_strequ(cmmnd, "rra") || ft_strequ(cmmnd, "rrr"))
+		*a_mode = 4;
+	if (ft_strequ(cmmnd, "rrb") || ft_strequ(cmmnd, "rrr"))
+		*b_mode = 4;
+}
+
 void	exec_for_both(t_stack *a, t_stack *b, \
 		void (*cmnd)(t_stack*, int, char*), char *command)
 {

@@ -55,84 +55,60 @@ int		read_and_exec(t_stack *a, t_stack *b, int visual, int *arr)
 	int		max_size;
 
 	max_size = (int)a->size;
+	if (visual == 1)
+	 	return (console_draw_mode(a, b, max_size));
 	if (visual == 2)
-		return (handle_graphics(a, b, max_size, arr));
+		return (graphics_mode(a, b, max_size, arr));
 	else
-		return (handle_console(a, b, max_size, visual));
+		return (basic_mode(a, b));
 }
 
-int handle_console(t_stack *a, t_stack *b, int max_size, int visual)
+char	**read_commands(int *error)
 {
-	char	*command;
+	char	*line;
+	char	*cmmnds_string;
+	char 	**cmmnds;
 	int		brd;
+	int 	i;
 
-	brd = 0;
-	command = NULL;
-	while ((brd = get_next_line(0, &command)) > 0)
+	i = 0;
+	line = NULL;
+	cmmnds_string = NULL;
+	while ((brd = get_next_line(0, &line)) > 0)
 	{
-		if (execute_command(a, b, command))
-		{
-			if (visual == 1)
-				draw_console(a, b, max_size);
-			ft_strdel(&command);
-		}
-		else
-		{
-			ft_strdel(&command);
-			return (0);
-		}
+		if (ft_strlen(line) == 0)
+			*error = 1;
+		cmmnds_string = ft_str_gapjoin_free(&cmmnds_string, &line, '\n');
+		i++;
 	}
-	return (1);
+	if (i > 0)
+		cmmnds = ft_strsplit(cmmnds_string, '\n');
+	ft_strdel(&cmmnds_string);
+	return ((i > 0 && !(*error)) ? cmmnds : NULL);
 }
 
- int handle_graphics(t_stack *a, t_stack *b, int max_size, int *arr)
- {
-	t_graphics	*graph;
-	SDL_Event	event;
-	char	*command;
-	int		brd;
+int basic_mode(t_stack *a, t_stack *b)
+{
+	int		i;
+	char	**cmmnds;
+	int		error;
 
-	brd = 0;
-	command = NULL;
-	graph = graph_init(a, b, max_size, arr);
-	while (graph->is_running)
+	error = 0;
+	i = -1;
+	if ((cmmnds = read_commands(&error)))
 	{
-		if (!graph->is_paused)
+		while (cmmnds[++i])
 		{
-			if ((brd = get_next_line(0, &command)) > 0)
+			if (!execute_command(a, b, cmmnds[i]))
 			{
-				if (!execute_command(a, b, command))
-				{
-					graph->is_running = false;
-					graph->error = true;
-				}
+				ft_string_array_del(cmmnds);
+				free(cmmnds);
+				return (0);
 			}
-			else
-				graph->is_running = false;
 		}
-		while (SDL_PollEvent(&event))
-			handle_event(&event, graph);
-		draw_graphics(a, b, graph);
-		ft_strdel(&command);
-		if (!graph->is_paused)
-	 		SDL_Delay(75);
+		ft_string_array_del(cmmnds);
+		free(cmmnds);
+		return (1);
 	}
-	SDL_DestroyWindow(graph->window);
-	SDL_Quit();
-	return (graph->error ? 0 : 1);
- }
-
-void 	handle_event(SDL_Event *event, t_graphics *graph)
-{
-	if (event->type == SDL_QUIT)
-	{
-		graph->is_running = false;
-	}
-	else if (event->type == SDL_KEYDOWN)
-	{
-		if (event->key.keysym.sym == SDLK_ESCAPE)
-			graph->is_running = false;
-		else if (event->key.keysym.sym == SDLK_SPACE)
-			graph->is_paused = (graph->is_paused ? false : true);
-	}
+	return (0);
 }

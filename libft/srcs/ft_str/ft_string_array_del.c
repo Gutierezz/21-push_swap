@@ -10,4 +10,3 @@ void    ft_string_array_del(char **arr)
 	while(i >= 0)
 		ft_strdel(&arr[i--]);
 }
-

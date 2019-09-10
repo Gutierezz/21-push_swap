@@ -42,7 +42,7 @@ echo "sa" | valgrind ./checker -v "1 7 8 2 5 10 22 -3 -25" 2>&1 | grep lost
 echo "rr" | valgrind ./checker -4 1024 22 74 -65 -11 951 23 42 2>&1 | grep lost
 echo "sa" valgrind ./checker -v 1 7 8 -3 12 11 2 -9 5 15 10 22 -25 2>&1 | grep lost
 echo "MIXED"
-ARG=`ruby -e "puts (1..30).to_a.shuffle.join(' ')"`; ./push_swap $ARG | valgrind ./checker $ARG 2>&1 | grep lost
-ARG=`ruby -e "puts (1..30).to_a.shuffle.join(' ')"`; valgrind ./push_swap $ARG 2>&1 | grep lost
-ARG=`ruby -e "puts (1..30).to_a.shuffle.join(' ')"`; ./push_swap $ARG | valgrind ./checker $ARG 2>&1 | grep lost
-ARG=`ruby -e "puts (1..30).to_a.shuffle.join(' ')"`; valgrind ./push_swap $ARG 2>&1 | grep lost
+ARG=`ruby -e "puts (0..2).to_a.shuffle.join(' ')"`; ./push_swap $ARG | valgrind ./checker $ARG 2>&1 | grep lost
+ARG=`ruby -e "puts (1..300).to_a.shuffle.join(' ')"`; valgrind ./push_swap $ARG 2>&1 | grep lost
+ARG=`ruby -e "puts (-100..30).to_a.shuffle.join(' ')"`; ./push_swap $ARG | valgrind ./checker $ARG 2>&1 | grep lost
+ARG=`ruby -e "puts (0..70).to_a.shuffle.join(' ')"`; valgrind ./push_swap $ARG 2>&1 | grep lost

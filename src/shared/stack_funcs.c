@@ -6,6 +6,7 @@ t_node	*new_node(int data)
 
 	new = (t_node*)ft_memalloc(sizeof(t_node));
 	new->data = data;
+	new->color = 0;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);
