@@ -6,7 +6,7 @@
 /*   By: ttroll <ttroll@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 13:38:31 by ttroll            #+#    #+#             */
-/*   Updated: 2019/04/22 19:17:55 by ttroll           ###   ########.fr       */
+/*   Updated: 2019/09/11 15:26:22 by ttroll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int			main(int argc, char **argv)
 		return (0);
 	a = new_stack();
 	b = new_stack();
-	if ((i = fit_into_int(argc, argv, &arr, visual)) > 0 && !repeated_elems(arr, i))
+	if ((i = fit_into_int(argc, argv, &arr, visual)) > 0 && !repeats(arr, i))
 	{
 		while (--i >= 0)
 			push(a, new_node(arr[i]));
@@ -33,7 +33,8 @@ int			main(int argc, char **argv)
 			ft_fprintf(2, "Error\n");
 			return (clear_memory(a, b, arr));
 		}
-		(is_empty(b) && is_sorted(a, a->size, asc)) ? ft_printf("OK\n") : ft_printf("KO\n");
+		(is_empty(b) && is_sorted(a, a->size, asc)) ? ft_printf("OK\n") : \
+		ft_printf("KO\n");
 	}
 	else
 		ft_fprintf(2, "Error\n");

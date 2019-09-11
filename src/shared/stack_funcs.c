@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_funcs.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttroll <ttroll@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/11 15:12:58 by ttroll            #+#    #+#             */
+/*   Updated: 2019/09/11 15:13:38 by ttroll           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-t_node	*new_node(int data)
+t_node		*new_node(int data)
 {
 	t_node	*new;
 
@@ -12,7 +24,7 @@ t_node	*new_node(int data)
 	return (new);
 }
 
-t_stack	*new_stack()
+t_stack		*new_stack(void)
 {
 	t_stack	*stack;
 
@@ -22,9 +34,9 @@ t_stack	*new_stack()
 	return (stack);
 }
 
-void	clear_stack(t_stack *stack)
+void		clear_stack(t_stack *stack)
 {
-	t_node *tmp;
+	t_node	*tmp;
 
 	tmp = NULL;
 	if (stack->top != NULL)
@@ -37,12 +49,12 @@ void	clear_stack(t_stack *stack)
 	ft_memdel((void **)&stack);
 }
 
-int		is_empty(t_stack *stack)
+int			is_empty(t_stack *stack)
 {
 	return (stack->top == NULL);
 }
 
-int		is_sorted(t_stack *stack, size_t len, int (*cmp)(int, int))
+int			is_sorted(t_stack *stack, size_t len, int (*cmp)(int, int))
 {
 	size_t	i;
 	t_node	*ptr;

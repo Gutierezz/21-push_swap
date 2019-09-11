@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   console_visualizer.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttroll <ttroll@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/11 15:02:14 by ttroll            #+#    #+#             */
+/*   Updated: 2019/09/11 15:03:24 by ttroll           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	draw_console(t_stack *a, t_stack *b, int max_size)
+void		draw_console(t_stack *a, t_stack *b, int max_size)
 {
 	int		i;
 	t_node	*a_p;
@@ -25,7 +37,7 @@ void	draw_console(t_stack *a, t_stack *b, int max_size)
 	ft_printf("\n");
 }
 
-void	draw_level(int a_val, int b_val, int mode)
+void		draw_level(int a_val, int b_val, int mode)
 {
 	if (mode == 3)
 		ft_printf("||  %11d  |*|  %11d  ||\n", a_val, b_val);
@@ -34,23 +46,23 @@ void	draw_level(int a_val, int b_val, int mode)
 	else if (mode == 2)
 		ft_printf("||  %11c  |*|  %11d  ||\n", ' ', b_val);
 	else
-		ft_printf("||  %11c  |*|  %11c  ||\n", ' ',  ' ');
+		ft_printf("||  %11c  |*|  %11c  ||\n", ' ', ' ');
 }
 
-int	level_mode(int a_size, int b_size, int i, int max_size)
+int			level_mode(int a_size, int b_size, int i, int max_size)
 {
 	if ((max_size - i <= a_size && max_size - i <= b_size))
 		return (3);
 	else if (max_size - i <= a_size && a_size > 0)
 		return (1);
-	else if (max_size - i <=  b_size && b_size > 0)
+	else if (max_size - i <= b_size && b_size > 0)
 		return (2);
 	else
 		return (0);
 }
 
 int			console_draw_mode(t_stack *a, t_stack *b, int max_size)
- {
+{
 	char	*command;
 	int		brd;
 
@@ -67,4 +79,4 @@ int			console_draw_mode(t_stack *a, t_stack *b, int max_size)
 		draw_console(a, b, max_size);
 	}
 	return (1);
- }
+}

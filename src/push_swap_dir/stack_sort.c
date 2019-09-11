@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttroll <ttroll@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/11 15:09:44 by ttroll            #+#    #+#             */
+/*   Updated: 2019/09/11 15:11:30 by ttroll           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void		multi_rot_both(t_stack *a, t_stack *b, t_rotation *rot, int rot_index)
+void			multi_rot_both(t_stack *a, t_stack *b, t_rotation *rot, \
+					int rot_index)
 {
-	int	i;
+	int			i;
 
 	i = -1;
 	if (rot_index == rboth)
@@ -16,14 +29,15 @@ void		multi_rot_both(t_stack *a, t_stack *b, t_rotation *rot, int rot_index)
 	{
 		while (++i < rot->a_rr && i < rot->b_rr)
 			exec_for_both(a, b, rev_rotate, "rrr");
-		(rot->a_rr > rot->b_rr) ? mult_rot(a, rot->a_rr - i, rev_rotate, "rra") : \
-								  mult_rot(b, rot->b_rr - i, rev_rotate, "rrb");
+		(rot->a_rr > rot->b_rr) ? \
+		mult_rot(a, rot->a_rr - i, rev_rotate, "rra") : \
+		mult_rot(b, rot->b_rr - i, rev_rotate, "rrb");
 	}
 }
 
-void		rotate_stacks(t_stack *a, t_stack *b, t_rotation *rot)
+void			rotate_stacks(t_stack *a, t_stack *b, t_rotation *rot)
 {
-	int	rot_index;
+	int			rot_index;
 
 	rot_index = get_min_rot_index(rot);
 	if (rot_index == rboth || rot_index == rrboth)
@@ -40,9 +54,9 @@ void		rotate_stacks(t_stack *a, t_stack *b, t_rotation *rot)
 	}
 }
 
-void		push_all(t_stack *a, t_stack *b, int *max, int *arr)
+void			push_all(t_stack *a, t_stack *b, int *max, int *arr)
 {
-	int	min;
+	int			min;
 
 	min = quick_select(arr, 0, a->size - 1, 0);
 	*max = quick_select(arr, 0, a->size - 1, a->size - 1);
@@ -57,7 +71,7 @@ void		push_all(t_stack *a, t_stack *b, int *max, int *arr)
 	}
 }
 
-t_rotation	*find_lowest_rot(t_stack *a, t_stack *b)
+t_rotation		*find_lowest_rot(t_stack *a, t_stack *b)
 {
 	t_node		*ptr;
 	t_rotation	*lowest_rot;
@@ -84,36 +98,7 @@ t_rotation	*find_lowest_rot(t_stack *a, t_stack *b)
 	return (lowest_rot);
 }
 
-// t_rotation	*find_lowest_rot(t_stack *a, t_stack *b)
-// {
-// 	t_node		*ptr;
-// 	t_rotation	*lowest_rot;
-// 	t_rotation	tmp;
-// 	size_t		i;
-// 	int			a_r;
-
-// 	i = 0;
-// 	ptr = b->top;
-// 	a_r = a_rot_count(a, DATA(ptr));
-// 	lowest_rot = new_rotation(a_r, a->size - a_r, i, b->size - i);
-// 	while (++i < b->size)
-// 	{
-// 		ptr = ptr->next;
-// 		a_r = a_rot_count(a, DATA(ptr));
-// 		set_a_rot(&tmp, a_r, a->size - a_r);
-// 		set_b_rot(&tmp, i, b->size - i);
-// 		calc_rots(&tmp);
-// 		if (get_min_rot(&tmp) < get_min_rot(lowest_rot))
-// 		{
-// 			set_a_rot(lowest_rot, tmp.a_r, tmp.a_rr);
-// 			set_b_rot(lowest_rot, tmp.b_r, tmp.b_rr);
-// 			calc_rots(lowest_rot);
-// 		}
-// 	}
-// 	return (lowest_rot);
-// }
-
-void		sort_stack(t_stack *a, t_stack *b, int *arr)
+void			sort_stack(t_stack *a, t_stack *b, int *arr)
 {
 	t_rotation	*rot;
 	int			max;

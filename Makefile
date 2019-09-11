@@ -6,7 +6,7 @@
 #    By: ttroll <ttroll@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/12 16:11:19 by ttroll            #+#    #+#              #
-#    Updated: 2019/04/12 17:30:50 by ttroll           ###   ########.fr        #
+#    Updated: 2019/09/11 15:22:50 by ttroll           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ SDL_CFLAGS = $(shell sdl2-config --cflags)
 SDL_LDFLAGS = $(shell sdl2-config --libs)
 FLAGS	 = -Wall -Wextra -Werror
 
-INC	= -I $(LIB_DIR)/includes -I ./includes
+INC	= -I $(LIB_DIR)/includes -I ./includes $(SDL_CFLAGS)
 LIB_LNK = -L $(LIB_DIR) -lft
 
 all: sort check

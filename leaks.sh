@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 echo 'PUSH SWAP WITH WRONG OR EMPTY INPUT'
 valgrind ./push_swap 2>&1 | grep lost

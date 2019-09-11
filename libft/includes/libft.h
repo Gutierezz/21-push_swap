@@ -6,7 +6,7 @@
 /*   By: ttroll <ttroll@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 22:05:22 by ttroll            #+#    #+#             */
-/*   Updated: 2019/04/12 13:14:27 by ttroll           ###   ########.fr       */
+/*   Updated: 2019/09/11 15:51:56 by ttroll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ char				*ft_str_gapjoin(const char *s1, const char *s2, char gap);
 char				*ft_str_gapjoin_free(char **s1, char **s2, char gap);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
-void                ft_string_array_del(char **arr);
+void				ft_string_array_del(char **arr);
 
 int					ft_putchar(char c);
 void				ft_putstr(char const *s);
@@ -147,7 +147,7 @@ double				ft_modf(double x, double *iptr);
 void				ft_round_double(double *nb, unsigned precision);
 int					ft_getexp_dbl(double x);
 int					ft_getsign_dbl(double x);
-double              ft_nullsign_dbl(double x);
+double				ft_nullsign_dbl(double x);
 double				ft_nanval_double(int sign);
 int					ft_isnan(double x);
 int					ft_isinf(double x);
@@ -157,7 +157,7 @@ size_t				ft_unblen_base(unsigned long long nb, unsigned int base);
 size_t				ft_nblen(long long nb);
 
 int					ft_atoi(const char *str);
-long long           ft_atoll(const char *str);
+long long			ft_atoll(const char *str);
 double				ft_atof(const char *str);
 char				*ft_ftoa(double nb, size_t prec, size_t *length, \
 					int *exp_form);

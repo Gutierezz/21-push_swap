@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_string_array_del.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttroll <ttroll@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/11 15:48:10 by ttroll            #+#    #+#             */
+/*   Updated: 2019/09/11 15:48:25 by ttroll           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void    ft_string_array_del(char **arr)
+void		ft_string_array_del(char **arr)
 {
-	int     i;
+	int		i;
 
 	i = 0;
 	while (arr[i])
 		i++;
-	while(i >= 0)
+	while (i >= 0)
 		ft_strdel(&arr[i--]);
 }

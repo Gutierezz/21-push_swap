@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   graphics.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttroll <ttroll@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/11 15:05:05 by ttroll            #+#    #+#             */
+/*   Updated: 2019/09/11 17:13:05 by ttroll           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int graphics_mode(t_stack *a, t_stack *b, int max_size, int *arr)
- {
+int				graphics_mode(t_stack *a, t_stack *b, int max_size, int *arr)
+{
 	t_graphics	*graph;
 	char		**cmmnds;
 	int			ret;
@@ -21,9 +33,9 @@ int graphics_mode(t_stack *a, t_stack *b, int max_size, int *arr)
 		free(cmmnds);
 	}
 	return (ret);
- }
+}
 
-int		graphics_loop(t_graphics *graph, char **cmmnds)
+int				graphics_loop(t_graphics *graph, char **cmmnds)
 {
 	SDL_Event	event;
 	int			i;
@@ -34,24 +46,25 @@ int		graphics_loop(t_graphics *graph, char **cmmnds)
 		if (!graph->is_paused)
 		{
 			event.type = SDL_KEYDOWN;
-    		event.key.keysym.sym = SDLK_RIGHT;
+			event.key.keysym.sym = SDLK_RIGHT;
 			SDL_PushEvent(&event);
 		}
 		while (SDL_PollEvent(&event))
-				handle_event(&event, graph, cmmnds, &i);
+			handle_event(&event, graph, cmmnds, &i);
 		if (graph->error)
 			return (0);
 		draw_graphics(0, 0, graph, 1);
 		if (!graph->is_paused)
-	 		SDL_Delay(200);
+			SDL_Delay(100);
 	}
 	return (1);
 }
 
-void 	handle_event(SDL_Event *event, t_graphics *graph, char **cmmnds, int *i)
+void			handle_event(SDL_Event *event, t_graphics *graph, \
+				char **cmmnds, int *i)
 {
-	int	a_mode;
-	int	b_mode;
+	int			a_mode;
+	int			b_mode;
 
 	if (event->type == SDL_QUIT)
 		graph->is_running = false;
@@ -73,7 +86,8 @@ void 	handle_event(SDL_Event *event, t_graphics *graph, char **cmmnds, int *i)
 	}
 }
 
-void	draw_graphics(int a_mode, int b_mode, t_graphics *graph, int repaint)
+void			draw_graphics(int a_mode, int b_mode, t_graphics *graph, \
+				int repaint)
 {
 	if (repaint)
 	{
@@ -85,7 +99,7 @@ void	draw_graphics(int a_mode, int b_mode, t_graphics *graph, int repaint)
 	draw_stack(graph->a, graph, 0);
 	draw_stack(graph->b, graph, WIN_WID / 2);
 	SDL_RenderPresent(graph->render);
-	SDL_Delay(200);
+	SDL_Delay(100);
 }
 
 t_graphics		*graph_init(t_stack *a, t_stack *b, int max_size, int *arr)
@@ -100,7 +114,8 @@ t_graphics		*graph_init(t_stack *a, t_stack *b, int max_size, int *arr)
 	SDL_Init(SDL_INIT_EVERYTHING);
 	graph->window = SDL_CreateWindow("PUSH SWAP", SDL_WINDOWPOS_UNDEFINED, \
 	SDL_WINDOWPOS_UNDEFINED, WIN_WID, WIN_HEIGHT, 0);
-	graph->render = SDL_CreateRenderer(graph->window, -1, SDL_RENDERER_ACCELERATED);
+	graph->render = SDL_CreateRenderer(graph->window, -1, \
+		SDL_RENDERER_ACCELERATED);
 	SDL_RenderSetLogicalSize(graph->render, WIN_WID, WIN_HEIGHT);
 	graph->is_running = true;
 	graph->is_paused = false;
@@ -109,7 +124,6 @@ t_graphics		*graph_init(t_stack *a, t_stack *b, int max_size, int *arr)
 	graph->b = b;
 	graph->max_size = max_size;
 	graph->height_mult = (WIN_HEIGHT - BORDER * 2) / max_size;
-	// printf("H_SIZE %d \n", graph->height_mult);
 	graph->width_mult = ((WIN_WID / 2 - 2 * BORDER) / (ABS(max) + ABS(min)));
 	return (graph);
 }

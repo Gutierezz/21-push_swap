@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   more_operations.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttroll <ttroll@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/11 15:11:56 by ttroll            #+#    #+#             */
+/*   Updated: 2019/09/11 15:12:07 by ttroll           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	color_mode(char *cmmnd, int *a_mode, int *b_mode)
@@ -41,7 +53,7 @@ void	push_to_dst(t_stack *src, t_stack *dst, char *command)
 	}
 }
 
-int asc(int a, int b)
+int		asc(int a, int b)
 {
 	return (a <= b);
 }

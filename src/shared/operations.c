@@ -6,13 +6,13 @@
 /*   By: ttroll <ttroll@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 17:32:13 by ttroll            #+#    #+#             */
-/*   Updated: 2019/04/22 19:49:28 by ttroll           ###   ########.fr       */
+/*   Updated: 2019/09/11 15:12:45 by ttroll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_stack *stack, t_node *new_top)
+void		push(t_stack *stack, t_node *new_top)
 {
 	if (is_empty(stack))
 	{
@@ -31,7 +31,7 @@ void	push(t_stack *stack, t_node *new_top)
 	stack->size++;
 }
 
-t_node	*pop(t_stack *stack)
+t_node		*pop(t_stack *stack)
 {
 	t_node	*tmp;
 
@@ -53,9 +53,9 @@ t_node	*pop(t_stack *stack)
 	return (tmp);
 }
 
-void	swap_top2(t_stack *stack, int both, char *command)
+void		swap_top2(t_stack *stack, int both, char *command)
 {
-	int	tmp;
+	int		tmp;
 
 	if (stack->top && stack->size > 1)
 	{
@@ -64,11 +64,10 @@ void	swap_top2(t_stack *stack, int both, char *command)
 		stack->top->data = tmp;
 		if (!both && command)
 			ft_printf("%s\n", command);
-
 	}
 }
 
-void	rotate(t_stack *stack, int both, char *command)
+void		rotate(t_stack *stack, int both, char *command)
 {
 	if (stack->top && stack->size > 1)
 	{
@@ -78,7 +77,7 @@ void	rotate(t_stack *stack, int both, char *command)
 	}
 }
 
-void	rev_rotate(t_stack *stack, int both, char *command)
+void		rev_rotate(t_stack *stack, int both, char *command)
 {
 	if (stack->top && stack->size > 1)
 	{

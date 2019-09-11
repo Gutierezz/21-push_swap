@@ -6,13 +6,13 @@
 /*   By: ttroll <ttroll@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:32:41 by ttroll            #+#    #+#             */
-/*   Updated: 2019/04/12 18:53:51 by ttroll           ###   ########.fr       */
+/*   Updated: 2019/09/11 17:02:28 by ttroll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	clear_memory(t_stack *a, t_stack *b, int *arr)
+int			clear_memory(t_stack *a, t_stack *b, int *arr)
 {
 	clear_stack(a);
 	clear_stack(b);
@@ -20,12 +20,12 @@ int	clear_memory(t_stack *a, t_stack *b, int *arr)
 	return (0);
 }
 
-int		is_digit_string(const char *str)
+int			is_digit_string(const char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
-	if (str[i] == '-')
+	if (str[i] == '-' || str[i] == '+')
 		i++;
 	if (!str[i])
 		return (0);
@@ -38,7 +38,7 @@ int		is_digit_string(const char *str)
 	return (1);
 }
 
-int		handle_multiarg(int *arr, char *arg)
+int			handle_multiarg(int *arr, char *arg)
 {
 	int			i;
 	int			arg_count;
@@ -51,9 +51,9 @@ int		handle_multiarg(int *arr, char *arg)
 	while (++i < arg_count)
 	{
 		if (!is_digit_string(split[i]) || (ft_strlen(split[i]) > 11))
-			break;
+			break ;
 		if ((tmp = ft_atoll(split[i])) < INT_MIN || tmp > INT_MAX)
-			break;
+			break ;
 		*(arr + i) = (int)tmp;
 	}
 	ft_string_array_del(split);
@@ -61,7 +61,7 @@ int		handle_multiarg(int *arr, char *arg)
 	return (i < arg_count ? -1 : arg_count);
 }
 
-int		fit_into_int(int ac, char **av, int **arr, int visual)
+int			fit_into_int(int ac, char **av, int **arr, int visual)
 {
 	int			ret;
 	int			i;
@@ -86,7 +86,7 @@ int		fit_into_int(int ac, char **av, int **arr, int visual)
 	return (size);
 }
 
-int		repeated_elems(int *arr, int size)
+int			repeats(int *arr, int size)
 {
 	int		i;
 	int		j;

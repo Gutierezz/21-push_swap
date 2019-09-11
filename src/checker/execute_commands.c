@@ -6,13 +6,13 @@
 /*   By: ttroll <ttroll@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:34:19 by ttroll            #+#    #+#             */
-/*   Updated: 2019/04/12 18:47:32 by ttroll           ###   ########.fr       */
+/*   Updated: 2019/09/11 15:15:28 by ttroll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		get_visual_mode(char *arg)
+int			get_visual_mode(char *arg)
 {
 	if (ft_strequ(arg, "-v"))
 		return (1);
@@ -21,7 +21,7 @@ int		get_visual_mode(char *arg)
 	return (0);
 }
 
-int		execute_command(t_stack *a, t_stack *b, char *command)
+int			execute_command(t_stack *a, t_stack *b, char *command)
 {
 	if (!ft_strcmp(command, "sa"))
 		swap_top2(a, 0, NULL);
@@ -50,26 +50,26 @@ int		execute_command(t_stack *a, t_stack *b, char *command)
 	return (1);
 }
 
-int		read_and_exec(t_stack *a, t_stack *b, int visual, int *arr)
+int			read_and_exec(t_stack *a, t_stack *b, int visual, int *arr)
 {
 	int		max_size;
 
 	max_size = (int)a->size;
 	if (visual == 1)
-	 	return (console_draw_mode(a, b, max_size));
+		return (console_draw_mode(a, b, max_size));
 	if (visual == 2)
 		return (graphics_mode(a, b, max_size, arr));
 	else
 		return (basic_mode(a, b));
 }
 
-char	**read_commands(int *error)
+char		**read_commands(int *error)
 {
 	char	*line;
 	char	*cmmnds_string;
-	char 	**cmmnds;
+	char	**cmmnds;
 	int		brd;
-	int 	i;
+	int		i;
 
 	i = 0;
 	line = NULL;
@@ -87,7 +87,7 @@ char	**read_commands(int *error)
 	return ((i > 0 && !(*error)) ? cmmnds : NULL);
 }
 
-int basic_mode(t_stack *a, t_stack *b)
+int			basic_mode(t_stack *a, t_stack *b)
 {
 	int		i;
 	char	**cmmnds;

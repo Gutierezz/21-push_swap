@@ -6,13 +6,13 @@
 /*   By: ttroll <ttroll@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 12:03:19 by ttroll            #+#    #+#             */
-/*   Updated: 2019/03/31 19:59:43 by ttroll           ###   ########.fr       */
+/*   Updated: 2019/09/11 15:33:48 by ttroll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	initialize(int *sign, double *pos, size_t *i, double *res)
+static void		initialize(int *sign, double *pos, size_t *i, double *res)
 {
 	*sign = 1;
 	*pos = 0.1;
@@ -20,13 +20,13 @@ static void	initialize(int *sign, double *pos, size_t *i, double *res)
 	*res = 0;
 }
 
-double		ft_atof(const char *str)
+double			ft_atof(const char *str)
 {
-	double	    res;
-	long long   integer;
-	size_t	    i;
-	double	    pos;
-	int		    sign;
+	double		res;
+	long long	integer;
+	size_t		i;
+	double		pos;
+	int			sign;
 
 	initialize(&sign, &pos, &i, &res);
 	integer = ft_atoll(str);

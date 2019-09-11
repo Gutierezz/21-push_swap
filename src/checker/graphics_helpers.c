@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   graphics_helpers.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttroll <ttroll@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/11 15:04:56 by ttroll            #+#    #+#             */
+/*   Updated: 2019/09/11 15:31:52 by ttroll           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void		draw_contour(t_graphics *graph)
+void			draw_contour(t_graphics *graph)
 {
-	SDL_Rect rect;
+	SDL_Rect	rect;
 
 	SDL_SetRenderDrawColor(graph->render, 0, 149, 148, 255);
 	SDL_RenderClear(graph->render);
@@ -15,7 +27,7 @@ void		draw_contour(t_graphics *graph)
 	SDL_RenderFillRect(graph->render, &rect);
 }
 
-void	paint_stack(t_stack *stack, int mode)
+void			paint_stack(t_stack *stack, int mode)
 {
 	t_node		*ptr;
 	size_t		i;
@@ -64,13 +76,13 @@ void			draw_stack(t_stack *stack, t_graphics *graph, int start)
 	}
 }
 
-void	set_rect_pos(SDL_Rect *rect, int x, int y)
+void			set_rect_pos(SDL_Rect *rect, int x, int y)
 {
 	rect->x = x;
 	rect->y = y;
 }
 
-void	set_rect_size(SDL_Rect *rect, int w, int h)
+void			set_rect_size(SDL_Rect *rect, int w, int h)
 {
 	rect->w = w;
 	rect->h = h;
