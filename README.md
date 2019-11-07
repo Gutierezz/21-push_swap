@@ -23,6 +23,9 @@ First arg will be on top of the stack a and b will be empty.
 push_swap program sorts stack a in ascending order(lowest value on top) and prints each executed command.  
 checker program reads stdout and applies commands to the stacks.  
 When reading is finished, checker prints the status of the stack : "OK" if a is sorted and b is empty, "KO" otherwise  
+
+Usage to check sort correctness :  
+./push_swap 1 5 3 4 2 | ./checker 1 5 3 4 2  
   
 Checker flags:  
   -v for console visualization after each readed command execution  
