@@ -1,5 +1,6 @@
 # 21-push_swap
-Stack sort using another stack  
+  
+##h1Insertion sort implementation on two stacks  
   
 Allowed commands:  
 pa : pop element from b stack and push it to a  
