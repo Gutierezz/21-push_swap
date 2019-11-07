@@ -15,7 +15,7 @@ rra : rotate a stack backward
 rrb : rotate b stack backard  
 rrr : rotate both stacks backward  
   
-forward rotation moves stack top value to the bottom of the stack  
+forward rotation moves stack top element to the bottom of the stack  
 backward rotation moves stack bottom element on top of the stack  
 
 Both checker and push_swap programs read stack elements from program's arguments.  
