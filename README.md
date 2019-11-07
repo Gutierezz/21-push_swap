@@ -24,7 +24,7 @@ push_swap program sorts stack a in ascending order(lowest value on top) and prin
 checker program reads stdout and applies commands to the stacks.  
 When reading is finished, checker prints the status of the stack : "OK" if a is sorted and b is empty, "KO" otherwise  
 
-Usage to check sort correctness :  
+Usage to check correctness of the sort:  
 ./push_swap 1 5 3 4 2 | ./checker 1 5 3 4 2  
   
 Checker flags:  
