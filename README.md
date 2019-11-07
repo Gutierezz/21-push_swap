@@ -1,8 +1,8 @@
 # 21-push_swap
   
-# Insertion sort implementation on two stacks   
+### Insertion sort implementation on two stacks   
   
-Allowed commands:  
+#### Allowed commands:  
 pa : pop element from b stack and push it to a  
 pb : pop element from a stack and push it to b  
 sa : swap stack a top 2 elements  
@@ -25,7 +25,7 @@ push_swap program sorts stack a in ascending order(lowest value on top) and prin
 checker program reads stdout and applies commands to the stacks.  
 When reading is finished, checker prints the status of the stack : "OK" if a is sorted and b is empty, "KO" otherwise  
 
-Usage to check correctness of the sort:  
+### Usage to check correctness of the sort:  
 ./push_swap 1 5 3 4 2 | ./checker 1 5 3 4 2  
   
 Checker flags:  
