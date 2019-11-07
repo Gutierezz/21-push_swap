@@ -26,6 +26,7 @@ echo "" | valgrind ./checker -v 42 2>&1 | grep lost
 echo "sa" | valgrind ./checker "1 2 1 3" 2>&1 | grep lost
 echo "ra" | valgrind ./checker "2 2" 2>&1 | grep lost
 echo "sa" | valgrind ./checker "a 2" 2>&1 | grep lost
+echo 'CHECKER WITH WRONG OR EMPTY INPUT 2 part'
 echo "pb" | valgrind ./checker "2147483649" 2>&1 | grep lost
 echo "sa" | valgrind ./checker 1 7 8 2 5 2 1 10 22 -3 -25 2>&1 | grep lost
 echo "sa " | valgrind ./checker "1 2" 2>&1 | grep lost

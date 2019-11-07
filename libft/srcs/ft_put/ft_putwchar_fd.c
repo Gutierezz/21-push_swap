@@ -49,7 +49,7 @@ int						ft_putwchar_fd(wint_t c, int fd)
 	size = (size_t)get_wchar_size(c);
 	if (size == 1)
 		i = ft_putchar_fd((char)c, fd);
-	else if (size > MB_CUR_MAX)
+	else if (size > (int)MB_CUR_MAX)
 		return (err_handle(c, fd));
 	else
 	{

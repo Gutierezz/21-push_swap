@@ -55,7 +55,7 @@ int				graphics_loop(t_graphics *graph, char **cmmnds)
 			return (0);
 		draw_graphics(0, 0, graph, 1);
 		if (!graph->is_paused)
-			SDL_Delay(100);
+			SDL_Delay(30);
 	}
 	return (1);
 }
@@ -99,7 +99,7 @@ void			draw_graphics(int a_mode, int b_mode, t_graphics *graph, \
 	draw_stack(graph->a, graph, 0);
 	draw_stack(graph->b, graph, WIN_WID / 2);
 	SDL_RenderPresent(graph->render);
-	SDL_Delay(100);
+	SDL_Delay(30);
 }
 
 t_graphics		*graph_init(t_stack *a, t_stack *b, int max_size, int *arr)

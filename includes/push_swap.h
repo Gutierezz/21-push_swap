@@ -19,8 +19,8 @@
 # include "ft_math.h"
 # include "ft_printf.h"
 
-# define WIN_WID 2080
-# define WIN_HEIGHT 1240
+# define WIN_WID 800
+# define WIN_HEIGHT 600
 # define BORDER 20
 
 # define DATA(node) node->data
