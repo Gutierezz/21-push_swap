@@ -26,8 +26,9 @@ checker program reads stdout and applies commands to the stacks.
 When reading is finished, checker prints the status of the stack : "OK" if a is sorted and b is empty, "KO" otherwise  
 
 #### Usage to check correctness of the sort:  
-./push_swap 1 5 3 4 2 | ./checker 1 5 3 4 2  
-  
+ ARG="1 5 3 4 2"  
+./push_swap $ARG | ./checker $ARG  
+   
 Checker flags:  
   -v for console visualization after each readed command execution  
   -gv for SDL2 graphics visualization  
